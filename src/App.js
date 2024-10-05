@@ -4,6 +4,7 @@ import NavBar from './components/NavBars'
 import Home from './components/Hoome'
 import About from './components/About'
 import NoteState from './context/notes/NoteState'
+import { Alert } from './components/Alert'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <NoteState>
         <Router>
           <NavBar />
+          <Alert message="some message"/>
           <div className="container">
             <Routes>
               <Route exact path="/" element={<Home />} />
