@@ -36,6 +36,9 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     })
 
+    const json = await response.json()
+    console.log(json)
+
     const note = {
       _id: '67060857233d7e3f645cac3ed',
       user: '670084b133d7e3f645cac3da',
@@ -60,7 +63,7 @@ const NoteState = (props) => {
       },
     })
 
-    const json = response.json();
+    const json = response.json()
     console.log(json)
 
     const newNotes = notes.filter((note) => {
@@ -81,18 +84,23 @@ const NoteState = (props) => {
       },
       body: JSON.stringify({ title, description, tag }),
     })
-    const json = response.json()
+    const json = await response.json()
+    console.log(json)
+
+    let newNotes = notes.slice() 
 
     // logic to edit in client
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index]
+    for (let index = 0; index < newNotes.length; index++) {
+      const element = newNotes[index]
       if (element._id === id) {
-        element.title = title
-        element.description = description
-        element.tag = tag
+        newNotes[index].title = title
+        newNotes[index].description = description
+        newNotes[index].tag = tag
+        break
       }
     }
-  }
+    setNotes(newNotes)
+  } 
 
   return (
     <NoteContext.Provider
