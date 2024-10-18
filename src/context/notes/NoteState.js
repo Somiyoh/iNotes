@@ -36,18 +36,7 @@ const NoteState = (props) => {
       body: JSON.stringify({ title, description, tag }),
     })
 
-    const json = await response.json()
-    console.log(json)
-
-    const note = {
-      _id: '67060857233d7e3f645cac3ed',
-      user: '670084b133d7e3f645cac3da',
-      title: title,
-      description: description,
-      tag: tag,
-      date: '2024-10-05T00:16:50.852Z',
-      __v: 0,
-    }
+    const note = await response.json()
     setNotes(notes.concat(note))
   }
 
@@ -87,7 +76,7 @@ const NoteState = (props) => {
     const json = await response.json()
     console.log(json)
 
-    let newNotes = notes.slice() 
+    let newNotes = notes.slice()
 
     // logic to edit in client
     for (let index = 0; index < newNotes.length; index++) {
@@ -100,7 +89,7 @@ const NoteState = (props) => {
       }
     }
     setNotes(newNotes)
-  } 
+  }
 
   return (
     <NoteContext.Provider
