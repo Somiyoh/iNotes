@@ -18,7 +18,6 @@ const Noteitem = (props) => {
             }}></i>
             <i className="fa-solid fa-pen-to-square mx-2" onClick={() => {
                 updateNote(note);
-                props.showAlert("Updated Succesfully", "success");
             }}></i>
           </div>
           <p className="card-text">{note.description}</p>

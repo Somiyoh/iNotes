@@ -39,6 +39,7 @@ const Notes = (props) => {
 
   const handleClick = (e) => {
     editNote(note.id, note.etitle, note.edescription, note.etag)
+    props.showAlert("Updated Succesfully", "success");
   }
 
   const onChange = (e) => {
