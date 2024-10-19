@@ -1,11 +1,12 @@
 import Notes from './Notes'
 
 
-const Hoome = () => {
+const Hoome = (props) => {
+  const {showAlert} = props
   return ( 
     <div>
       
-      <Notes/>
+      <Notes showAlert={showAlert}/>
     </div>
   )
 }

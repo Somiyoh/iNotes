@@ -10,7 +10,7 @@ import AddNote from './AddNote'
 //     ↓
 // Noteitem (Receives each note as a prop and displays it)
 
-const Notes = () => {
+const Notes = (props) => {
   const context = useContext(noteContext)
   const { notes, getNotes, editNote } = context
   const ref = useRef(null)
@@ -47,7 +47,7 @@ const Notes = () => {
 
   return (
     <>
-      <AddNote />
+      <AddNote showAlert={props.showAlert}/>
       {/* modal starts here */}
       <button
         ref={ref}
@@ -153,7 +153,7 @@ const Notes = () => {
           {notes.length === 0 && 'No notes to be displayed. Please add a note.'}
         </div>
         {notes.map((note) => {
-          return <Noteitem key={note._id} updateNote={updateNote} note={note} />
+          return <Noteitem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
         })}
       </div>
     </>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const Signup = () => {
+const Signup = (props) => {
   const [credentials, setCredentials] = useState({
     name: '',
     email: '',
@@ -26,10 +26,14 @@ const Signup = () => {
     })
     const json = await response.json()
     console.log(json)
-
-    // save the auth token and redirect
-    localStorage.setItem('token', json.authtoken)
-    navigate('/')
+    if (json.success) {
+      // save the auth token and redirect
+      localStorage.setItem('token', json.authtoken)
+      navigate('/')
+      props.showAlert('Account created succesfully ', 'success')
+    } else {
+      props.showAlert('Invalid. Please try again', 'danger')
+    }
   }
 
   // eslint-disable-next-line
