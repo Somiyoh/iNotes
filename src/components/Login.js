@@ -23,8 +23,8 @@ const Login = (props) => {
     if (json.success) {
         // save the auth token and redirect
         localStorage.setItem('token', json.authtoken)
-        navigate("/")
         props.showAlert('Logged in succesfully ', 'success')
+        navigate("/")
     } else {
       props.showAlert('Invalid Credentials', 'danger')
     }
@@ -36,9 +36,10 @@ const Login = (props) => {
   }
 
   return (
-    <div>
+    <div className='mt-2'>
+      <h2 className='my-2'>Login to use iNotes</h2>
       <form onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="my-3">
           <label htmlFor="email" className="form-label">
             Email address
           </label>
@@ -55,7 +56,7 @@ const Login = (props) => {
             We'll never share your email with anyone else.
           </div>
         </div>
-        <div className="mb-3">
+        <div className="my-3">
           <label htmlFor="password" className="form-label">
             Password
           </label>

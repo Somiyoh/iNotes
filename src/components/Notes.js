@@ -13,6 +13,15 @@ import AddNote from './AddNote'
 const Notes = (props) => {
   const context = useContext(noteContext)
   const { notes, getNotes, editNote } = context
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      getNotes()
+    }
+    // eslint-disable-next-line
+  }, [getNotes])
+
   const ref = useRef(null)
 
   const [note, setNote] = useState({
@@ -21,11 +30,6 @@ const Notes = (props) => {
     edescription: '',
     etag: '',
   })
-
-  useEffect(() => {
-    getNotes()
-    // eslint-disable-next-line
-  }, [])
 
   const updateNote = (currenNote) => {
     ref.current.click()
@@ -39,7 +43,7 @@ const Notes = (props) => {
 
   const handleClick = (e) => {
     editNote(note.id, note.etitle, note.edescription, note.etag)
-    props.showAlert("Updated Succesfully", "success");
+    props.showAlert('Updated Succesfully', 'success')
   }
 
   const onChange = (e) => {
@@ -48,7 +52,7 @@ const Notes = (props) => {
 
   return (
     <>
-      <AddNote showAlert={props.showAlert}/>
+      <AddNote showAlert={props.showAlert} />
       {/* modal starts here */}
       <button
         ref={ref}
@@ -140,7 +144,9 @@ const Notes = (props) => {
                 className="btn btn-primary"
                 onClick={handleClick}
                 data-bs-dismiss="modal"
-                disabled={note.etitle.length < 5 || note.edescription.length < 5}
+                disabled={
+                  note.etitle.length < 5 || note.edescription.length < 5
+                }
               >
                 Update Note
               </button>
@@ -154,7 +160,14 @@ const Notes = (props) => {
           {notes.length === 0 && 'No notes to be displayed. Please add a note.'}
         </div>
         {notes.map((note) => {
-          return <Noteitem key={note._id} updateNote={updateNote} showAlert={props.showAlert} note={note} />
+          return (
+            <Noteitem
+              key={note._id}
+              updateNote={updateNote}
+              showAlert={props.showAlert}
+              note={note}
+            />
+          )
         })}
       </div>
     </>
