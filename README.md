@@ -25,21 +25,25 @@ Ensure you have the following installed:
 ### Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/your-username/iNotes.git
    ```
 
 2. **Navigate to the project directory:**
+
    ```bash
    cd iNotes
    ```
 
 3. **Install the dependencies:**
+
    ```bash
    npm install
    ```
 
 4. **Set up the backend:**
+
    - Ensure your backend is configured to connect to your MongoDB database.
    - Add a `.env` file in the backend with the following content:
      ```
@@ -48,11 +52,13 @@ Ensure you have the following installed:
      ```
 
 5. **Run the backend server (if using Node/Express):**
+
    ```bash
    npm run server
    ```
 
 6. **Run the React app:**
+
    ```bash
    npm start
    ```
@@ -71,10 +77,6 @@ Ensure you have the following installed:
 ## Contributing
 
 Contributions are welcome! Feel free to open a pull request or report an issue.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
